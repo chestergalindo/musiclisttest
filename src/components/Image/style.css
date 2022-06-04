@@ -4,7 +4,7 @@
   cursor: pointer;
 }
 
-.imageContainer-image {
+.imageContainer__image {
   width: 200px;
   height: 200px;
   background-color: #fff;
@@ -15,7 +15,7 @@
   margin-bottom: 10px;
 }
 
-.imageContainer-text {
+.imageContainer__text {
   color: #fff;
   display: grid;
   place-items: center;
