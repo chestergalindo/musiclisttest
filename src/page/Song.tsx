@@ -1,5 +1,5 @@
 import './App.css';
 
-export const Songs = () => {
+export const Song = () => {
   return <p> song </p>;
 };
