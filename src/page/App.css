@@ -1,3 +1,8 @@
 p {
   color: #f00;
 }
+
+:root {
+  --principal-color: rgb(21, 21, 21);
+  --secundary-color: rgb(33, 33, 33);
+}
