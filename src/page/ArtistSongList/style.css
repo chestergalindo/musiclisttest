@@ -1,0 +1,95 @@
+.artistSongList__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px 0;
+  margin: 0;
+  background: rgb(48, 48, 48);
+  background: linear-gradient(
+    180deg,
+    rgba(48, 48, 48, 1) 0%,
+    rgba(0, 0, 0, 0.8533788515406162) 100%
+  );
+}
+
+.artistSongList__text {
+  display: flex;
+  margin-top: 50px;
+}
+
+.artistSongList__text h3 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.artistSongList__text p {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0;
+  margin: 0;
+}
+
+.artistSongList__star {
+  color: yellow;
+}
+
+.artistSongList__songs {
+  background-color: #303030;
+  height: 100%;
+  width: 100%;
+  max-width: 800px;
+}
+
+.artistSongList__song__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.artistSongList__song__container {
+  display: grid;
+  grid-template-columns: 50px 1fr 32px;
+  align-items: center;
+  margin: 20px auto;
+  padding-left: 20px;
+}
+
+.artistSongList__song__button--icon {
+  color: white;
+}
+
+.artistSongList__albums {
+  display: grid;
+  place-items: center;
+  background-color: #303030;
+}
+
+.artistSongList__song__container p {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.artistSongList__song__container strong {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.artistSongList__song__container div,
+.artistSongList__song__container button {
+  height: 56px;
+  border-bottom: 2px solid #373737;
+}
+
+.artistSongList__songs h3 {
+  margin-top: 20px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './style.css';
 
-export const Image = (props: any) => {
+export const ArtistImage = (props: any) => {
   return (
     <div className="imageContainer">
       {props.name ? (

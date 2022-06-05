@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import './style.css';
-import { Image } from '../../components/Image';
+import { ArtistImage } from '../../components/ArtistImage';
 import { GridAlbums } from '../../components/GridAlbums';
 import { ContextMenu } from '../../hooks/context';
 
@@ -14,14 +14,16 @@ export const ArtistList = () => {
           isLoading={isLoading}
           data={data}
           renderItem={(artist: any) => (
-            <Image
-              isCircle
-              id={artist.id}
-              name={artist.name}
-              src={artist.image}
-              alt={artist.name}
-              key={artist.id}
-            />
+            <div key={artist.id}>
+              <ArtistImage
+                isCircle
+                id={artist.id}
+                name={artist.name}
+                src={artist.image}
+                alt={artist.name}
+                popularity={artist.popularity}
+              />
+            </div>
           )}
         />
       </div>
