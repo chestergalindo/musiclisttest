@@ -1,0 +1,63 @@
+.PlaySong__container {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  bottom: 0px;
+  background-color: #1d1d1d;
+  padding-top: 10px;
+}
+
+.PlaySong__song__button--icon {
+  color: white;
+  cursor: pointer;
+}
+
+.PlaySong__song__button {
+  cursor: pointer;
+}
+
+.PlaySong__container__onplay {
+  display: grid;
+  grid-template-columns: 30% 1fr 20%;
+}
+
+.PlaySong__container__onplay__reproduction {
+  display: grid;
+  grid-template-columns: 8% 70% 8%;
+  place-items: center;
+}
+
+.PlaySong__container__onplay__reproduction svg {
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.PlaySong__container__onplay__reproductiondata img {
+  width: 50px;
+  height: 50px;
+  border-radius: 14%;
+}
+
+.PlaySong__container__onplay__reproductiondata {
+  display: grid;
+  grid-template-columns: 10% 1fr;
+}
+
+.PlaySong__container__onplay__reproductiondata_duration {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.PlaySong__container__onplay__reproductiondata_txt {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.PlaySong__container__onplay__icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  font-size: 24px;
+}

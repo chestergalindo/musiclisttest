@@ -7,18 +7,15 @@ import { Header } from './components/Header';
 
 export const RouteList = () => {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ArtistList />} />
-          <Route path="artist">
-            <Route path=":idAlbum" element={<ArtistSongList />} />
-          </Route>
-          <Route path="song" element={<Song />} />
-          <Route path="playSong" element={<PlaySong />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+      <Routes>
+        <Route path="/" element={<ArtistList />} />
+        <Route path="artist">
+          <Route path=":idAlbum" element={<ArtistSongList />} />
+        </Route>
+        <Route path="song" element={<Song />} />
+      </Routes>
+    </BrowserRouter>
   );
 };

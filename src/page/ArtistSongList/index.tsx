@@ -1,13 +1,15 @@
 import { useContext } from 'react';
-import { ArtistImage } from '../../components/ArtistImage';
-import { ContextMenu } from '../../hooks/context';
-import { FaStar } from 'react-icons/fa';
+import './style.css';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { callApi } from '../../utils/callApi';
+import { Link } from 'react-router-dom';
 import keyBy from 'lodash/keyBy';
-import './style.css';
-import { FaPlay } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
+
+import { ArtistImage } from '../../components/ArtistImage';
+import { PlaySong } from '../PlaySong';
+import { ContextMenu } from '../../hooks/context';
+import { callApi } from '../../utils/callApi';
 
 export const ArtistSongList = () => {
   const { data: basicInfo } = useContext(ContextMenu);
@@ -35,20 +37,21 @@ export const ArtistSongList = () => {
         <div className="artistSongList__songs">
           <h3>Albumes</h3>
           {albumList?.map((album: any) => (
-            <div className="artistSongList__song__container" key={album.id}>
-              <img src={album.image} alt={album.name} className="artistSongList__song__img" />
-              <div>
-                <strong>{album?.name}</strong>
-                <p>canciones:{album?.total_tracks}</p>
+            <div key={album.id} className="artistSongList__song__container">
+              <Link to={`album/${album.id}`} className="artistSongList__song__content">
+                <img src={album.image} alt={album.name} className="artistSongList__song__img" />
+                <div>
+                  <strong>{album?.name}</strong>
+                  <p>canciones:{album?.total_tracks}</p>
+                </div>
+              </Link>
+              <div className="artistSongList__song__button">
+                <PlaySong id={album?.id} image={album.image} />
               </div>
-              <button className="artistSongList__song__button">
-                <FaPlay className="artistSongList__song__button--icon" />
-              </button>
             </div>
           ))}
         </div>
       </section>
-      ;
     </>
   );
 };
