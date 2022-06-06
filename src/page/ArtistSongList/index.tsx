@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import './style.css';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
 import keyBy from 'lodash/keyBy';
 import { FaStar } from 'react-icons/fa';
 
@@ -38,13 +37,13 @@ export const ArtistSongList = () => {
           <h3>Albumes</h3>
           {albumList?.map((album: any) => (
             <div key={album.id} className="artistSongList__song__container">
-              <Link to={`album/${album.id}`} className="artistSongList__song__content">
+              <div className="artistSongList__song__content">
                 <img src={album.image} alt={album.name} className="artistSongList__song__img" />
                 <div>
                   <strong>{album?.name}</strong>
                   <p>canciones:{album?.total_tracks}</p>
                 </div>
-              </Link>
+              </div>
               <div className="artistSongList__song__button">
                 <PlaySong id={album?.id} image={album.image} />
               </div>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './style.css';
 import keyBy from 'lodash/keyBy';
 import { useQuery } from 'react-query';
@@ -10,17 +11,22 @@ import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { HiDotsVertical } from 'react-icons/hi';
 
 export const PlaySong = (props: any) => {
+  const [isOpenListSongs, setIsOpenListSongs] = useState(false);
+  const [idx, setIdx] = useState(0);
   const { data } = useQuery('songs', () => callApi(`albums/${props.id}/songs`));
 
   const albums = keyBy(data, 'album');
   const songsOfAlbum = albums[props.id];
 
-  console.log(songsOfAlbum?.songs[0]);
-
   const ToMinutesAndSeconds = (duration: any) => {
     const minutes = Math.floor(duration / 60_000);
     const seconds = ((duration % 60_000) / 1000).toFixed(0);
     return `${minutes}:${seconds}`;
+  };
+
+  const randomSong = () => {
+    const random = Math.floor(Math.random() * songsOfAlbum.songs.length);
+    setIdx(random);
   };
 
   return (
@@ -31,35 +37,83 @@ export const PlaySong = (props: any) => {
             <FaPlay className="PlaySong__song__button--icon" />
           </button>
           {portal(
-            <div className="PlaySong__container">
+            <div
+              className="PlaySong__container"
+              style={{ height: isOpenListSongs ? '55vh' : '70px' }}
+            >
+              {isOpenListSongs ? (
+                <section className="PlaySong__container__lits_songs">
+                  <h3>Canciones</h3>
+                  <div className="PlaySong__container__lits_songs__list">
+                    {songsOfAlbum?.songs.map((song: any, index: any) => {
+                      return (
+                        <div
+                          key={song.id}
+                          className={`PlaySong__container__lits_songs__list-element ${
+                            song.id === songsOfAlbum?.songs[idx]?.id
+                              ? 'PlaySong__container__lits_songs__list-element--active'
+                              : ''
+                          }`}
+                          onClick={() => {
+                            setIdx(index);
+                          }}
+                        >
+                          <img src={props.image} alt={song.name} className="PlaySong__song__img" />
+                          <div className="PlaySong__song__content">
+                            <strong>{song.name}</strong>
+                          </div>
+                          <p>{ToMinutesAndSeconds(song.duration_ms)}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </section>
+              ) : (
+                <></>
+              )}
               <section className="PlaySong__container__onplay">
                 <div className="PlaySong__container__onplay__reproduction">
                   <BiSkipPrevious />
-                  {songsOfAlbum?.songs[0]?.preview_url && (
+                  {songsOfAlbum?.songs[idx]?.preview_url && (
                     <audio controls>
-                      <source src={songsOfAlbum?.songs[0]?.preview_url} type="audio/mpeg" />
+                      <source src={songsOfAlbum?.songs[idx]?.preview_url} type="audio/mpeg" />
                     </audio>
                   )}
                   <BiSkipNext />
                 </div>
                 <div className="PlaySong__container__onplay__reproductiondata">
-                  <img src={props.image} alt={songsOfAlbum?.songs[0]?.name} />
+                  <img src={props.image} alt={songsOfAlbum?.songs[idx]?.name} />
                   <div>
                     <p className="PlaySong__container__onplay__reproductiondata_txt">
-                      {songsOfAlbum?.songs[0]?.name}
+                      {songsOfAlbum?.songs[idx]?.name}
                     </p>
                     <p className="PlaySong__container__onplay__reproductiondata_duration">
                       duracion:
-                      {ToMinutesAndSeconds(songsOfAlbum?.songs[0]?.duration_ms)}
+                      {ToMinutesAndSeconds(songsOfAlbum?.songs[idx]?.duration_ms)}
                     </p>
                   </div>
                 </div>
                 <div className="PlaySong__container__onplay__icons">
                   <BsPlayCircleFill />
-                  <FaRandom />
-                  {/* <TiArrowSortedDown /> */}
-                  <TiArrowSortedUp />
-                  <FaExternalLinkAlt />
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      randomSong();
+                    }}
+                  >
+                    <FaRandom />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsOpenListSongs(!isOpenListSongs);
+                    }}
+                  >
+                    {isOpenListSongs ? <TiArrowSortedDown /> : <TiArrowSortedUp />}
+                  </button>
+                  <a target="_blank" href={songsOfAlbum?.songs[0]?.spotify_url}>
+                    <FaExternalLinkAlt />
+                  </a>
                   <HiDotsVertical />
                 </div>
               </section>

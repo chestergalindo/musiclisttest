@@ -62,42 +62,16 @@
   width: 100%;
 }
 
-.artistSongList__song__container {
-  display: grid;
-  grid-template-columns: 1fr 34px;
-}
-
 .artistSongList__albums {
   display: grid;
   place-items: center;
   background-color: #303030;
 }
 
-.artistSongList__song__container p {
-  color: white;
-  font-size: 0.9rem;
-}
-
-.artistSongList__song__container strong {
-  color: white;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.artistSongList__song__container div,
-.artistSongList__song__container button {
-  height: 56px;
-  border-bottom: 2px solid #373737;
-}
-
 .artistSongList__songs h3 {
   margin-top: 20px;
   font-size: 1.6rem;
   font-weight: bold;
-}
-
-.artistSongList__song__container img {
-  margin-top: -10px;
 }
 
 .artistSongList__song__button {
