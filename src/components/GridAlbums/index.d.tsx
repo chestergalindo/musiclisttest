@@ -1,6 +1,6 @@
 export interface IGridAlbums {
   isLoading: boolean;
-  data: Array<iArtist>;
+  data: Array<IArtist>;
   renderItem: (item: any) => JSX.Element;
 }
 

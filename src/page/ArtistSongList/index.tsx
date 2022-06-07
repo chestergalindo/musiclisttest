@@ -36,7 +36,14 @@ export const ArtistSongList = () => {
       ) : (
         <>
           <section className="artistSongList__container">
-            <ArtistImage src={artistData?.image} name={artistData?.name} isCircle />
+            <ArtistImage
+              src={artistData?.image}
+              name={artistData?.name}
+              isCircle
+              id={0}
+              alt={''}
+              popularity={0}
+            />
             <div className="artistSongList__text">
               <h3>{artistData?.name}</h3>
               <div>
