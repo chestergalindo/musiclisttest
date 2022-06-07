@@ -1,24 +1,25 @@
 import { useContext } from 'react';
 import './style.css';
-import { useParams } from 'react-router-dom';
+
 import { useQuery } from 'react-query';
 import keyBy from 'lodash/keyBy';
 import { FaStar } from 'react-icons/fa';
-
+import { useParams } from 'react-router-dom';
 import { ArtistImage } from '../../components/ArtistImage';
 import { PlaySong } from '../PlaySong';
 import { ContextMenu } from '../../hooks/context';
 import { callApi } from '../../utils/callApi';
 
 export const ArtistSongList = () => {
-  const { data: basicInfo } = useContext(ContextMenu);
-  const { idAlbum = 0 } = useParams();
-  const { data: artistInfo } = useQuery('albums', () => callApi(`artists/${idAlbum}/albums`));
-  const groupedByAlbum = keyBy(artistInfo, 'artist');
-  const artistBasicInfo = keyBy(basicInfo, 'id');
+  const { idArtist = 0 } = useParams();
+  const { artistInformation } = useContext(ContextMenu);
 
-  const albumList = groupedByAlbum[+idAlbum]?.albums;
-  const artistData: any = artistBasicInfo[+idAlbum];
+  const { data: artistInfo } = useQuery('albums', () => callApi(`artists/${idArtist}/albums`));
+  const groupedByAlbum = keyBy(artistInfo, 'artist');
+  const artistBasicInfo = keyBy(artistInformation, 'id');
+
+  const albumList = groupedByAlbum[+idArtist]?.albums;
+  const artistData: any = artistBasicInfo[+idArtist];
 
   return (
     <>

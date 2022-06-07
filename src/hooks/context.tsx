@@ -6,7 +6,14 @@ import { defaultValues } from './defaultValues';
 export const ContextMenu = createContext(defaultValues);
 
 export const AppProvider = (props: any) => {
-  const { isLoading, data } = useQuery('repoData', () => callApi('artists'));
+  const { isLoading: isLoadingArtistInformation, data: artistInformation } = useQuery(
+    'repoData',
+    () => callApi('artists'),
+  );
 
-  return <ContextMenu.Provider value={{ isLoading, data }}>{props.children}</ContextMenu.Provider>;
+  return (
+    <ContextMenu.Provider value={{ isLoadingArtistInformation, artistInformation }}>
+      {props.children}
+    </ContextMenu.Provider>
+  );
 };

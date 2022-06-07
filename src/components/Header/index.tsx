@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header>
       <Link to="/randomsong">
-        <h1>Prueba</h1>
+        <h1>Random song</h1>
       </Link>
       <Link to="/">
         <h5> Lista de artistas</h5>

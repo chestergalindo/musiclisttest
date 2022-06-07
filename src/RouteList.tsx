@@ -11,7 +11,7 @@ export const RouteList = () => {
       <Routes>
         <Route path="/" element={<ArtistList />} />
         <Route path="artist">
-          <Route path=":idAlbum" element={<ArtistSongList />} />
+          <Route path=":idArtist" element={<ArtistSongList />} />
         </Route>
         <Route path="randomsong" element={<RandomSong />} />
       </Routes>

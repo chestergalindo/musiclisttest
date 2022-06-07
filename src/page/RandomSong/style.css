@@ -2,14 +2,13 @@
   background-color: #1d1d1d;
   color: #fff;
   display: grid;
-  grid-template-columns: 15% 1fr;
+  grid-template-columns: 20% 1fr;
   height: 30vh;
 }
 
 .RandomSong__reproduction img {
-  width: 100px;
-  height: 100px;
-  border-radius: 24%;
+  width: 180px;
+  height: 180px;
 }
 
 .RandomSong__reproduction__pic {
@@ -48,10 +47,15 @@
 }
 
 .RandomSong__reproduction__main__section {
+  padding: 1rem 0;
+}
+
+.RandomSong__reproduction__main__section li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 3rem;
+  padding: 0.2rem 2rem 0.2rem 2rem;
 }
 
 .RandomSong__reproduction__info__secondary {

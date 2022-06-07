@@ -1,4 +1,4 @@
 export const defaultValues = {
-  isLoading: true,
-  data: [],
+  isLoadingArtistInformation: true,
+  artistInformation: [],
 };

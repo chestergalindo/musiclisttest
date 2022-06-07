@@ -5,14 +5,14 @@ import { GridAlbums } from '../../components/GridAlbums';
 import { ContextMenu } from '../../hooks/context';
 
 export const ArtistList = () => {
-  const { isLoading, data } = useContext(ContextMenu);
+  const { isLoadingArtistInformation, artistInformation } = useContext(ContextMenu);
 
   return (
     <section className="artistList">
       <div className="artistList__list">
         <GridAlbums
-          isLoading={isLoading}
-          data={data}
+          isLoading={isLoadingArtistInformation}
+          data={artistInformation}
           renderItem={(artist: any) => (
             <div key={artist.id}>
               <ArtistImage
