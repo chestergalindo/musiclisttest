@@ -1,4 +1,4 @@
-.Song__reproduction {
+.RandomSong__reproduction {
   background-color: #1d1d1d;
   color: #fff;
   display: grid;
@@ -6,24 +6,24 @@
   height: 30vh;
 }
 
-.Song__reproduction img {
+.RandomSong__reproduction img {
   width: 100px;
   height: 100px;
   border-radius: 24%;
 }
 
-.Song__reproduction__pic {
+.RandomSong__reproduction__pic {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.Song__reproduction__info {
+.RandomSong__reproduction__info {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
-.Song__reproduction__info h3 {
+.RandomSong__reproduction__info h3 {
   font-size: 1.6rem;
   font-weight: 700;
   display: flex;
@@ -31,30 +31,30 @@
   padding-bottom: 0.5rem;
 }
 
-.Song__reproduction__main {
+.RandomSong__reproduction__main {
   background-color: #1d1d1d;
   color: #fff;
 }
 
-.Song__reproduction__main h3 {
+.RandomSong__reproduction__main h3 {
   font-size: 1.6rem;
   font-weight: 700;
   padding-left: 1rem;
 }
 
-.Song__reproduction__main strong {
+.RandomSong__reproduction__main strong {
   font-size: 1rem;
   font-weight: 700;
 }
 
-.Song__reproduction__main__section {
+.RandomSong__reproduction__main__section {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 3rem;
 }
 
-.Song__reproduction__info__secondary {
+.RandomSong__reproduction__info__secondary {
   height: 66.5vh;
   background-color: #1d1d1d;
 }

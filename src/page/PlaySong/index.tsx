@@ -9,25 +9,16 @@ import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
 import { BsPlayCircleFill } from 'react-icons/bs';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 import { HiDotsVertical } from 'react-icons/hi';
+import { useRandomId } from '../../hooks/useRandomId';
+import { toMinutesAndSeconds } from '../../utils/toMinutesAndSeconds';
 
 export const PlaySong = (props: any) => {
   const [isOpenListSongs, setIsOpenListSongs] = useState(false);
-  const [idx, setIdx] = useState(0);
   const { data } = useQuery('songs', () => callApi(`albums/${props.id}/songs`));
 
   const albums = keyBy(data, 'album');
   const songsOfAlbum = albums[props.id];
-
-  const ToMinutesAndSeconds = (duration: any) => {
-    const minutes = Math.floor(duration / 60_000);
-    const seconds = ((duration % 60_000) / 1000).toFixed(0);
-    return `${minutes}:${seconds}`;
-  };
-
-  const randomSong = () => {
-    const random = Math.floor(Math.random() * songsOfAlbum.songs.length);
-    setIdx(random);
-  };
+  const { idx, setIdx, setRandomId } = useRandomId(songsOfAlbum?.songs.length);
 
   return (
     <PortalWithState closeOnOutsideClick closeOnEsc>
@@ -62,7 +53,7 @@ export const PlaySong = (props: any) => {
                           <div className="PlaySong__song__content">
                             <strong>{song.name}</strong>
                           </div>
-                          <p>{ToMinutesAndSeconds(song.duration_ms)}</p>
+                          <p>{toMinutesAndSeconds(song?.duration_ms)}</p>
                         </div>
                       );
                     })}
@@ -89,7 +80,7 @@ export const PlaySong = (props: any) => {
                     </p>
                     <p className="PlaySong__container__onplay__reproductiondata_duration">
                       duracion:
-                      {ToMinutesAndSeconds(songsOfAlbum?.songs[idx]?.duration_ms)}
+                      {toMinutesAndSeconds(songsOfAlbum?.songs[idx]?.duration_ms)}
                     </p>
                   </div>
                 </div>
@@ -98,7 +89,7 @@ export const PlaySong = (props: any) => {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      randomSong();
+                      setRandomId();
                     }}
                   >
                     <FaRandom />
