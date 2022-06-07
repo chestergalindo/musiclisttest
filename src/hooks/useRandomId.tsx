@@ -4,7 +4,7 @@ export const useRandomId = (superiorEdge: number) => {
   const [idx, setIdx] = useState(0);
 
   const setRandomId = () => {
-    const randomId = Math.floor(Math.random() * superiorEdge);
+    const randomId: number = Math.floor(Math.random() * superiorEdge);
     setIdx(randomId);
   };
 

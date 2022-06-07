@@ -21,7 +21,7 @@
 }
 
 .artistSongList__text h3 {
-  color: #fff;
+  color: var(--quaternary-color);
   font-size: 30px;
   font-weight: bold;
   margin: 0;
@@ -40,7 +40,7 @@
 }
 
 .artistSongList__songs {
-  background-color: #303030;
+  background-color: var(--quinary-color);
   height: 100%;
   width: 100%;
   max-width: 800px;
@@ -65,7 +65,7 @@
 .artistSongList__albums {
   display: grid;
   place-items: center;
-  background-color: #303030;
+  background-color: var(--quinary-color);
 }
 
 .artistSongList__songs h3 {

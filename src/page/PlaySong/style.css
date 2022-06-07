@@ -3,7 +3,7 @@
   width: 100%;
 
   bottom: 0px;
-  background-color: #1d1d1d;
+  background-color: var(--tertiary-color);
   padding-top: 10px;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .PlaySong__container__lits_songs__list-element--active {
-  background-color: #333332;
+  background-color: var(--quinary-color);
 }
 
 .artistSongList__song__container {
@@ -139,7 +139,7 @@
 .artistSongList__song__container div,
 .artistSongList__song__container button {
   height: 56px;
-  border-bottom: 2px solid #373737;
+  border-bottom: 2px solid var(--senary-color);
 }
 
 .artistSongList__song__container img {

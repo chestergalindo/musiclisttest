@@ -6,6 +6,8 @@ import keyBy from 'lodash/keyBy';
 import { ContextMenu } from '../../hooks/context';
 import { toMinutesAndSeconds } from '../../utils/toMinutesAndSeconds';
 import { useRandomId } from '../../hooks/useRandomId';
+import { Helmet } from 'react-helmet';
+import { Loader } from '../../components/Loader';
 
 export const RandomSong = () => {
   const { artistInformation } = useContext(ContextMenu);
@@ -26,7 +28,7 @@ export const RandomSong = () => {
   const randomAlbum = songsByAlbum[+Object.keys(songsByAlbum)[0] + idSong];
   const randomAlbumSuggestion = songsByAlbum[+Object.keys(songsByAlbum)[0] + idSongSuggestion];
 
-  const { data: albumsDataByArtist } = useQuery('album', () =>
+  const { data: albumsDataByArtist, isLoading } = useQuery('album', () =>
     callApi(`albums/${randomAlbum?.id}/songs`),
   );
   const albums = keyBy(albumsDataByArtist, 'album');
@@ -39,47 +41,57 @@ export const RandomSong = () => {
     albums[randomAlbumSuggestion?.id >= 300 ? 300 : randomAlbumSuggestion?.id];
 
   return (
-    <section>
-      <div className="RandomSong__reproduction">
-        <div className="RandomSong__reproduction__pic">
-          <img src={randomAlbum?.image} alt={randomAlbum?.name} />
-        </div>
-        <div className="RandomSong__reproduction__info">
-          <h3>{randomSongsOfAlbum?.name}</h3>
-          <div>
-            <p> Album: {randomAlbum?.name}</p>
-            <p> {randomAlbum?.total_tracks} canciones </p>
+    <>
+      <Helmet>
+        <title>{`Random song - ${randomSongsOfAlbum?.name}`} </title>
+        <link rel="icon" type="image/svg+xml" href={randomAlbum?.image} />
+      </Helmet>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <section>
+          <div className="RandomSong__reproduction">
+            <div className="RandomSong__reproduction__pic">
+              <img src={randomAlbum?.image} alt={randomAlbum?.name} />
+            </div>
+            <div className="RandomSong__reproduction__info">
+              <h3>{randomSongsOfAlbum?.name}</h3>
+              <div>
+                <p> Album: {randomAlbum?.name}</p>
+                <p> {randomAlbum?.total_tracks} canciones </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="RandomSong__reproduction__info__secondary">
-        <div className="RandomSong__reproduction__main">
-          <h3>Canciones</h3>
-          <ol className="RandomSong__reproduction__main__section">
-            {album?.songs.map((song: any) => {
-              return (
-                <li key={song.id}>
-                  <strong> {song.name} </strong>
-                  <p> {toMinutesAndSeconds(song.duration_ms)} </p>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-        <div className="RandomSong__reproduction__main">
-          <h3>Sugerencias</h3>
-          <ol className="RandomSong__reproduction__main__section">
-            {albumSuggestion?.songs.map((SongSuggestion: any) => {
-              return (
-                <li key={SongSuggestion.id}>
-                  <strong> {SongSuggestion.name} </strong>
-                  <p> {toMinutesAndSeconds(SongSuggestion.duration_ms)} </p>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      </div>
-    </section>
+          <div className="RandomSong__reproduction__info__secondary">
+            <div className="RandomSong__reproduction__main">
+              <h3>Canciones</h3>
+              <ol className="RandomSong__reproduction__main__section">
+                {album?.songs.map((song: any) => {
+                  return (
+                    <li key={song.id}>
+                      <strong> {song.name} </strong>
+                      <p> {toMinutesAndSeconds(song.duration_ms)} </p>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+            <div className="RandomSong__reproduction__main">
+              <h3>Sugerencias</h3>
+              <ol className="RandomSong__reproduction__main__section">
+                {albumSuggestion?.songs.map((SongSuggestion: any) => {
+                  return (
+                    <li key={SongSuggestion.id}>
+                      <strong> {SongSuggestion.name} </strong>
+                      <p> {toMinutesAndSeconds(SongSuggestion.duration_ms)} </p>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 };

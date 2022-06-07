@@ -7,7 +7,7 @@
 .imageContainer__image {
   width: 200px;
   height: 200px;
-  background-color: #fff;
+  background-color: var(--quaternary-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -16,14 +16,14 @@
 }
 
 .imageContainer__text {
-  color: #fff;
+  color: var(--quaternary-color);
   display: grid;
   place-items: center;
   margin-top: -210px;
   margin-bottom: 24px;
   height: 200px;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--septenary-color);
   border-radius: 50%;
   font-weight: 500;
   font-size: 1rem;

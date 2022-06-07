@@ -1,6 +1,6 @@
 .RandomSong__reproduction {
-  background-color: #1d1d1d;
-  color: #fff;
+  background-color: var(--tertiary-color);
+  color: var(--quaternary-color);
   display: grid;
   grid-template-columns: 20% 1fr;
   height: 30vh;
@@ -31,8 +31,8 @@
 }
 
 .RandomSong__reproduction__main {
-  background-color: #1d1d1d;
-  color: #fff;
+  background-color: var(--tertiary-color);
+  color: var(--quaternary-color);
 }
 
 .RandomSong__reproduction__main h3 {
@@ -60,5 +60,5 @@
 
 .RandomSong__reproduction__info__secondary {
   height: 66.5vh;
-  background-color: #1d1d1d;
+  background-color: var(--tertiary-color);
 }

@@ -1,4 +1,9 @@
 :root {
   --principal-color: rgb(21, 21, 21);
   --secundary-color: rgb(33, 33, 33);
+  --tertiary-color: #1d1d1d;
+  --quaternary-color: #fff;
+  --quinary-color: #333332;
+  --senary-color: #373737;
+  --septenary-color: #1515157a;
 }
