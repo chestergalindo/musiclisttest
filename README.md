@@ -8,9 +8,9 @@ Page with Vite, React, postcss and typescript.
  some images of Projects:
 
  ![firstpage](./src/assets/1.jpeg)
- ![firstpage](./src/assets/2.png)
- ![firstpage](./src/assets/3.png)
- ![firstpage](./src/assets/1.png)
+ ![Secondpage](./src/assets/2.png)
+ ![Threepage](./src/assets/3.png)
+ ![fourpage](./src/assets/4.png)
 
 #### 🛠 Installation of project
 ```
